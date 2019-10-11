@@ -9,7 +9,9 @@ import * as reducers from "./states/reducers";
 
 const monsterReducer = combineReducers({
     count: reducers.countReducer,
-    // api: reducers.nasaAPI,
+    formValues: reducers.addSmurReducer,
+    api: reducers.getSmurfReducer,
+    smurf: reducers.smurfFormReducer,
   });
 
   const store = createStore(

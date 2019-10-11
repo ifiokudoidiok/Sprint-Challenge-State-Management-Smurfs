@@ -1,5 +1,4 @@
 import * as types from "./actionTypes";
-import uuid from "uuid";
 
 const initialCount = 0;
 
@@ -30,28 +29,9 @@ export function getSmurfReducer(state = initialData, action) {
 const initialFormState = {
   name: "",
   age: "",
-  height: "",
-  
+  height: ""
 };
-//-------------------------------
-export function smurfFormReducer(state=initialFormState, action){
-    switch (action.type) {
-        case types.ON_INPUT_CHANGE:
-            return {
-                ...state, [action.payload.name]: action.payload.value
-            }
-        case types.ON_SUBMIT:
-                return initialFormState;
-        default:
-            return state;
-    }
-}
 
-
-
-
-
-///-----------------------------------
 export function addSmurReducer(state = initialFormState, action) {
   switch (action.type) {
     case types.ON_INPUT_CHANGE:

@@ -1,82 +1,53 @@
-// import React from 'react';
-// import { connect } from 'react-redux';
-// import * as actionCreators from '../states/actionCreators';
-
-// export function Smurf({ formValues, changeInput }) {
-//   const onValueChange = event => {
-//     changeInput(event.target);
-//   };
-
-//   const onFormSubmit = event => {
-//     event.preventDefault();
-//     alert(`submitting ${formValues.lname}, ${formValues.fname}`);
-//   };
-
-//   return (
-//     <form className='component' onSubmit={onFormSubmit}>
-//       <label>Name
-//         <input value={formValues.fname} onChange={onValueChange} name='fname' placeholder="Name"/>
-//       </label><br />
-
-//       <label>Height
-//         <input value={formValues.lname} onChange={onValueChange} name='lname'  placeholder="Height"/>
-//       </label><br />
-
-//       <label>Height
-//         <input value={formValues.lname} onChange={onValueChange} name='lname'  placeholder="Height"/>
-//       </label><br />
-
-//       <input type='submit' />
-//     </form>
-//   );
-// }
-
-// export default connect(
-//   state => state,
-//   actionCreators,
-// )(Smurf);
-
 import React from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../states/actionCreators";
 
-export function SmurfForm(props) {
-  const { getFormValue, postSmurfs, smurfForm } = props;
+export function Smurf({ formValues, changeInput, postSmurfs }) {
+  const onValueChange = event => {
+    changeInput(event.target);
+  };
 
-  const submit = smurfForm => event => {
+  const onFormSubmit = event => {
     event.preventDefault();
-    postSmurfs(smurfForm);
+    postSmurfs(formValues);
   };
 
   return (
-    <form className="smurf-form">
-      <input
-        value={props.name}
-        onChange={getFormValue}
-        name="name"
-        type="text"
-        placeholder="name"
-      />
+    <form className="component" onSubmit={onFormSubmit}>
+      <label>
+        Name
+        <input
+          value={formValues.name}
+          onChange={onValueChange}
+          name="name"
+          placeholder="Name"
+        />
+      </label>
       <br />
 
-      <input
-        value={props.age}
-        onChange={getFormValue}
-        name="age"
-        type="text"
-        placeholder="age"
-      />
+      <label>
+        Height
+        <input
+          value={formValues.height}
+          onChange={onValueChange}
+          name="height"
+          placeholder="Height"
+        />
+      </label>
       <br />
 
-      <input
-        value={props.height}
-        onChange={getFormValue}
-        name="height"
-        type="text"
-        placeholder="height"
-      />
+      <label>
+        Age
+        <input
+          value={formValues.age}
+          onChange={onValueChange}
+          name="age"
+          placeholder="Age"
+        />
+      </label>
       <br />
-      <button onClick={submit(smurfForm)}>Submit</button>
+
+      <input type="submit" />
     </form>
   );
 }
@@ -84,4 +55,4 @@ export function SmurfForm(props) {
 export default connect(
   state => state,
   actionCreators
-)(SmurfForm);
+)(Smurf);
